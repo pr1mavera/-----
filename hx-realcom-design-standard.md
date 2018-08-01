@@ -76,13 +76,14 @@
   * chatRoom (聊天室模块)
     * sendGift (发礼物)
     * sendExpress (发表情)
-    * extend (发文件)
+    * sendExtend (发文件)
   * videoRoom (视频聊天模块)
     * lineUp (排队)
     * csVideo (视频)
+    * error (网络状态差 & 系统版本低)
   * csDetail (客服详情)
   * share (分享)
-  * error (网络状态差 & 系统版本低)
+  * videoBar (视频缩小时)
 
 ## 组件
 ### 1. 组件加载规范
@@ -118,25 +119,57 @@
 ### 2. 组件划分
 ###### 公用组件
   ```
-    - header-bar.vue // 头部组件
     - gift-Modal.vue // 赠送礼物时的弹出层
     - assess-Modal.vue // 客服评价弹出层
+    - assess-label.vue // 客服评价标签
+    - star-bar.vue // 评价星级组件
+    - send-gift-item.vue // 礼物列表item
   ```
 ###### chatRoom模块内部组件
   ```
-  // 主路由
+  // 入口路由组件
+    - chatRoom.vue // 底部发送礼物
+
+  // 公共组件
+    - chat-header-bar.vue // 聊天头部组件
     - chat-content-item.vue // 对话消息组件
-    - chat-bot-output.vue // 机器人返回输入组件
+    - chat-bot-output.vue // 机器人返回输出组件
     - chat-tip-item.vue // 对话提示组件(时间 & 转接 & 状态)
     - fload-button.vue // 右侧浮动按钮
     - input-bar.vue // 底部输入区域
 
-  // sendGift路由
-    - send-gift.vue // 底部发送礼物
+  // sendGift路由组件
+    - sendGift.vue // 底部发送礼物
 
-  // sendExpress路由
-    - send-express.vue // 底部发送表情
+  // sendExpress路由组件
+    - sendExpress.vue // 底部发送表情
 
-  // extend路由
-    - send-extend.vue // 底部发送文件
+  // extend路由组件
+    - sendExtend.vue // 底部发送文件
   ```
+###### videoRoom模块内部组件
+  ```
+  // 入口路由组件
+    - videoRoom.vue // 底部发送礼物
+
+  // 公共组件
+    - confirm-to-video-Modal.vue // 确认进入视频客服弹出层
+    - iOS-mask-Modal.vue // iOS转移至浏览器出层
+    - success-Modal.vue // 转接成功弹出层
+    - video-header-bar.vue // 视频头部组件
+    - video-footer-bar.vue // 视频底部组件
+    - finish-Modal.vue // 视频通话结束弹出层
+
+  // lineUp路由组件
+    - lineUp.vue // 排队
+
+  // csVideo路由组件
+    - csVideo.vue // 视频客服房间
+
+  // error路由组件
+    - error.vue // 底部发送文件
+  ```
+###### csDetail模块内部组件
+  ```
+  // 入口路由组件
+    - csDetail.vue // 底部发送礼物
