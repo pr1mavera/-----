@@ -83,7 +83,6 @@
     * error (网络状态差 & 系统版本低)
   * csDetail (客服详情)
   * share (分享)
-  * videoBar (视频缩小时)
 
 ## 组件
 ### 1. 组件加载规范
@@ -172,4 +171,66 @@
 ###### csDetail模块内部组件
   ```
   // 入口路由组件
-    - csDetail.vue // 底部发送礼物
+    - csDetail.vue // 客服详情页
+  ```
+###### share模块内部组件
+  ```
+  // 入口路由组件
+    - share.vue // 分享页
+
+  // 公共组件
+    - user-state-Modal.vue // 未关注官微 & 不是VIP
+  ```
+
+## 本地数据模型
+###### chatRoom
+首屏进入先获取历史消息记录列表(若没有则略过)，大概长这样：
+  ```
+  chat: [
+    {
+      groupId: '372331123',
+      identifier: 'userid_web_1530869554913',
+      nickName: '小华',
+      msg: '尊贵的客人，您好！',
+      textType: 0,
+      time: '2018-03-28 08:45:19',
+      type: 'text_msg'
+    },
+    {
+      groupId: '372331123',
+      identifier: 'userid_web_1530869554913',
+      nickName: '客人',
+      msg: 'hello！你好',
+      textType: 1,
+      time: '2018-03-28 08:45:19',
+      type: 'text_msg'
+    }
+  ]
+  ```
+根据拿到的消息记录的时间字段 `time` ，插入时间msg，重新构建消息队列，并缓存最后一条消息的时间节点，之后的对话绘制根据新的消息队列 push 不同类型的消息，规则为以分钟为单位绘制消息tip，其他类型的tip根据具体场景绘制
+  ```
+  chat: [
+    {
+      time: '2018-03-28 08:45:19',
+      type: 'time_msg'
+    },
+    {
+      groupId: '372331123',
+      identifier: 'userid_web_1530869554913',
+      nickName: '小华',
+      msg: '尊贵的客人，您好！',
+      textType: 0,
+      time: '2018-03-28 08:45:19',
+      type: 'text_msg'
+    },
+    {
+      groupId: '372331123',
+      identifier: 'userid_web_1530869554913',
+      nickName: '客人',
+      msg: 'hello！你好',
+      textType: 1,
+      time: '2018-03-28 08:45:19',
+      type: 'text_msg'
+    }
+  ]
+  ```
