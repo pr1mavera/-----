@@ -1,6 +1,5 @@
 # 华夏实时通讯-客户端-项目开发规范
 
-***
 ## 命名规范
 ### 1. 组件
 ###### 推荐方式
@@ -21,11 +20,10 @@
   >* 尽量按照功能模块来划分
 ### 3. 方法
 ###### 组件方法  *(参与dom交互的方法，包括用户操作可能调用的方法，可在其他组件内部调用)*
-`myFunction`
+`myFunction()`
 ###### 内置方法  *(用于处理内部数据，只能在当前组件内部使用的方法)*
-`_myFunction`
+`_myFunction()`
 
-***
 ## 结构化规范
 ###### vue文件基本结构
 ```
@@ -73,19 +71,19 @@
   - watch
 ```
 
-***
 ## 路由
 ###### 主要按照功能模块划分
-  * chat-room (聊天室模块)
-    * bot-chat (机器人聊天)
-    * cs-chat (客服聊天)
-  * video-room (视频聊天模块)
-    * line-up (排队)
-    * cs-video (视频)
-  * cs-detail (客服详情)
+  * chatRoom (聊天室模块)
+    * sendGift (发礼物)
+    * sendExpress (发表情)
+    * extend (发文件)
+  * videoRoom (视频聊天模块)
+    * lineUp (排队)
+    * csVideo (视频)
+  * csDetail (客服详情)
   * share (分享)
+  * error (网络状态差 & 系统版本低)
 
-***
 ## 组件
 ### 1. 组件加载规范
 ###### 尽可能使用异步加载
@@ -118,3 +116,27 @@
     const main = r => require.ensure([], () => r(mainM), 'main')
   ```
 ### 2. 组件划分
+###### 公用组件
+  ```
+    - header-bar.vue // 头部组件
+    - gift-Modal.vue // 赠送礼物时的弹出层
+    - assess-Modal.vue // 客服评价弹出层
+  ```
+###### chatRoom模块内部组件
+  ```
+  // 主路由
+    - chat-content-item.vue // 对话消息组件
+    - chat-bot-output.vue // 机器人返回输入组件
+    - chat-tip-item.vue // 对话提示组件(时间 & 转接 & 状态)
+    - fload-button.vue // 右侧浮动按钮
+    - input-bar.vue // 底部输入区域
+
+  // sendGift路由
+    - send-gift.vue // 底部发送礼物
+
+  // sendExpress路由
+    - send-express.vue // 底部发送表情
+
+  // extend路由
+    - send-extend.vue // 底部发送文件
+  ```
