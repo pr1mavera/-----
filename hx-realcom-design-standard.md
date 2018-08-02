@@ -73,16 +73,10 @@
 
 ## 路由
 ###### 主要按照功能模块划分
-  * chatRoom (聊天室模块)
-    * sendGift (发礼物)
-    * sendExpress (发表情)
-    * sendExtend (发文件)
-  * videoRoom (视频聊天模块)
-    * lineUp (排队)
-    * csVideo (视频)
-    * error (网络状态差 & 系统版本低)
-  * csDetail (客服详情)
-  * share (分享)
+* chat
+  * lineUp (排队)
+  * error (网络状态差 & 系统版本低)
+* share (分享)
 
 ## 组件
 ### 1. 组件加载规范
@@ -121,8 +115,9 @@
     - gift-Modal.vue // 赠送礼物时的弹出层
     - assess-Modal.vue // 客服评价弹出层
     - assess-label.vue // 客服评价标签
-    - star-bar.vue // 评价星级组件
+    - star-label.vue // 评价星级组件
     - send-gift-item.vue // 礼物列表item
+    - csDetail.vue // 客服详情页
   ```
 ###### chatRoom模块内部组件
   ```
@@ -136,15 +131,9 @@
     - chat-tip-item.vue // 对话提示组件(时间 & 转接 & 状态)
     - fload-button.vue // 右侧浮动按钮
     - input-bar.vue // 底部输入区域
-
-  // sendGift路由组件
-    - sendGift.vue // 底部发送礼物
-
-  // sendExpress路由组件
-    - sendExpress.vue // 底部发送表情
-
-  // extend路由组件
-    - sendExtend.vue // 底部发送文件
+    - send-gift.vue // 底部发送礼物
+    - send-express.vue // 底部发送表情
+    - send-extend.vue // 底部发送文件
   ```
 ###### videoRoom模块内部组件
   ```
@@ -168,11 +157,7 @@
   // error路由组件
     - error.vue // 底部发送文件
   ```
-###### csDetail模块内部组件
-  ```
-  // 入口路由组件
-    - csDetail.vue // 客服详情页
-  ```
+
 ###### share模块内部组件
   ```
   // 入口路由组件
